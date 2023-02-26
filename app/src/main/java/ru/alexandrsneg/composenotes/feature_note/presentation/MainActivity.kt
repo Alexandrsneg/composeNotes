@@ -1,4 +1,4 @@
-package ru.alexandrsneg.composenotes
+package ru.alexandrsneg.composenotes.feature_note.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

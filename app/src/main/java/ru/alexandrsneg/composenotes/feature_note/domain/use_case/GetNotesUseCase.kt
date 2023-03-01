@@ -13,7 +13,7 @@ class GetNotesUseCase(
     operator fun invoke(
         noteOrder: NoteOrder = NoteOrder.Date(OrderType.DESC)
     ): Flow<List<Note>> = noteRepository.getNotes().map { notes->
-        when (noteOrder.orderType) {
+        when (noteOrder.noteOrderType) {
             OrderType.ASC -> {
                 when(noteOrder) {
                     is NoteOrder.Title -> notes.sortedBy { it.title.lowercase() }

@@ -80,4 +80,23 @@ dependencies {
     //*************** HILT ***************
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
+    implementation 'androidx.hilt:hilt-navigation-fragment:1.0.0'
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+
+    implementation "androidx.navigation:navigation-compose:$nav_version"
+
+
+    //*************** TESTING ***************
+    //mockito
+    testImplementation "org.mockito:mockito-core:4.0.0"
+    implementation 'androidx.test.ext:junit-ktx:1.1.5'
+    // Optional -- mockito-kotlin
+    testImplementation "org.mockito.kotlin:mockito-kotlin:4.1.0"
+    testImplementation "org.mockito:mockito-inline:2.13.0"
+
+    //coroutines test
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+
+    //arch
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
 }

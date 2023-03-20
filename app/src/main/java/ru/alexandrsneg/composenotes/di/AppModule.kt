@@ -10,10 +10,7 @@ import ru.alexandrsneg.composenotes.feature_note.data.data_source.NoteDao
 import ru.alexandrsneg.composenotes.feature_note.data.data_source.NoteDatabase
 import ru.alexandrsneg.composenotes.feature_note.data.repository.NoteRepository
 import ru.alexandrsneg.composenotes.feature_note.domain.repository.INoteRepository
-import ru.alexandrsneg.composenotes.feature_note.domain.use_case.AddNoteUseCase
-import ru.alexandrsneg.composenotes.feature_note.domain.use_case.DeleteNoteUseCase
-import ru.alexandrsneg.composenotes.feature_note.domain.use_case.GetNotesUseCase
-import ru.alexandrsneg.composenotes.feature_note.domain.use_case.NoteUseCases
+import ru.alexandrsneg.composenotes.feature_note.domain.use_case.*
 import javax.inject.Singleton
 
 @Module
@@ -42,7 +39,8 @@ object AppModule {
         NoteUseCases(
             getNotesUseCase = GetNotesUseCase(noteRepository),
             deleteNoteUseCase = DeleteNoteUseCase(noteRepository),
-            addNoteUseCase = AddNoteUseCase(noteRepository)
+            addNoteUseCase = AddNoteUseCase(noteRepository),
+            getNoteByIdUseCase = GetNoteByIdUseCase(noteRepository)
         )
 
 }

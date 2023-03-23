@@ -40,26 +40,23 @@ class AddEditNoteViewModel @Inject constructor(
     init {
         savedStateHandle.get<Int>("noteId")?.let {
             if (it != -1) {
-                viewModelScope.launch {
-                    withContext(Dispatchers.IO) {
-                        noteUseCases.getNoteByIdUseCase.invoke(it)?.also { note ->
-                            currentNoteId = note.id
-                            _noteTitleState.value = noteTitleState.value.copy(
-                                text = note.title,
-                                isHintVisible = false
-                            )
-
-                            _noteContentState.value = noteContentState.value.copy(
-                                text = note.content,
-                                isHintVisible = false
-                            )
-                            _noteColorState.value = note.color
-                        }
+                viewModelScope.launch(Dispatchers.Main) {
+                    val note = withContext(Dispatchers.IO) {
+                        noteUseCases.getNoteByIdUseCase.invoke(it)
                     }
+                    currentNoteId = note?.id ?: -1
+                    _noteTitleState.value = noteTitleState.value.copy(
+                        text = note?.title ?: "Something goes wrong",
+                        isHintVisible = false
+                    )
+
+                    _noteContentState.value = noteContentState.value.copy(
+                        text = note?.content ?: "Something goes wrong",
+                        isHintVisible = false
+                    )
+                    _noteColorState.value = note?.color ?: -1
                 }
             }
-
-
         }
     }
 

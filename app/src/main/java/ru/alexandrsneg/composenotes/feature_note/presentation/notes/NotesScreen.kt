@@ -8,8 +8,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -24,6 +22,7 @@ import kotlinx.coroutines.launch
 import ru.alexandrsneg.composenotes.feature_note.presentation.NotesViewModel
 import ru.alexandrsneg.composenotes.feature_note.presentation.notes.components.NoteItem
 import ru.alexandrsneg.composenotes.feature_note.presentation.notes.components.OrderSection
+import ru.alexandrsneg.composenotes.feature_note.presentation.util.Screen
 import ru.alexandrsneg.composenotes.ui.theme.ComposeNotesTheme
 
 @Composable
@@ -39,8 +38,7 @@ fun NotesScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-
-
+                    navController.navigate(Screen.AddEditNotesScreen.route)
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
@@ -99,6 +97,10 @@ fun NotesScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
+                                navController.navigate(
+                                    Screen.AddEditNotesScreen.route +
+                                            "?noteId=${note.id}&noteColor=${note.color}"
+                                )
 
                             },
                         onDeleteClick = {

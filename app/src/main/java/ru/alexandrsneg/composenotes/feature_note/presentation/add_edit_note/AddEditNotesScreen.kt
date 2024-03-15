@@ -120,7 +120,7 @@ fun AddEditNotesScreen(
                 onFocusChange = {
                     viewModel.onEvent(AddEditNoteEvent.ChangeTitleFocus(it))
                 },
-                isHintVisible = contentState.isHintVisible,
+                isHintVisible = titleState.isHintVisible,
                 textStyle = MaterialTheme.typography.h5,
                 singleLine = true
             )
@@ -129,7 +129,7 @@ fun AddEditNotesScreen(
             //Content
             TransparentHintTextField(
                 text = contentState.text,
-                hint = contentState.text,
+                hint = contentState.hint,
                 onValueChange = {
                     viewModel.onEvent(AddEditNoteEvent.EnteredContent(it))
                 },
